@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gmail Cleanup</title>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/dmytro-afonin/gmail_cleanup/main/output.css" />
+</head>
+<body>
+<div class="container mx-auto p-1 mt-4">
+    <div class="flex gap-4">
+        <div>
+            <div class="rounded-3xl border-2 border-slate-500 p-3">
+                <h2 class="text-xl font-bold">Triggers</h2>
+                <h3 class="mt-2 text-lg font-semibold">Time Based</h3>
+                <ul>
+                    <li>Daily</li>
+                    <li>Monthly</li>
+                    <li>Yearly</li>
+                </ul>
+                <h3 class="mt-2 text-lg font-semibold">Calendar Events</h3>
+                <button class="mt-2 rounded-3xl border-2 border-slate-500 px-9 py-2">Add calendar</button>
+            </div>
+        </div>
+        <div class="flex-1">
+            <div class="rounded-3xl border-2 border-slate-500 p-3">
+                <h2 class="flex-1 text-xl font-bold">Settings</h2>
+                <form id="setting_form">
+                    <fieldset class="mb-4">
+                        <legend class="text-lg font-semibold">Delete older than</legend>
+                        <input id="value" class="mr-4 border-2 rounded-3xl px-4 border-slate-300"  name="value" type="number" max="999" min="1" step="1" inputmode="numeric" pattern="[1-9][0-9]*" />
+                        <label class="mr-4 ">
+                            <input id="y" type="radio" name="unit" value="y" />
+                            years
+                        </label>
+                        <label class="mr-4 ">
+                            <input id="m" type="radio" name="unit" value="m" />
+                            months
+                        </label>
+                        <label class="mr-4 ">
+                            <input id="d" type="radio" name="unit" value="d" />
+                            days
+                        </label>
+                        <label class="mr-4 ">
+                            <input id="important" type="checkbox" name="important" />
+                            Remove important
+                        </label>
+                        <label class="mr-4 ">
+                            <input id="starred" type="checkbox" name="starred" />
+                            Remove Starred
+                        </label>
+                        <label class="mr-4 ">
+                            <input id="unread" type="checkbox" name="unread" />
+                            Remove Unread
+                        </label>
+                    </fieldset>
+                    <button class="hover:bg-slate-300 rounded-3xl border-2 border-slate-400 px-4 py-1 transition-all mr-4" onclick="run(event)">Run</button>
+                    <button class="hover:bg-slate-300 rounded-3xl border-2 border-slate-400 px-4 py-1 transition-all mr-4" onclick="save(event)">Save</button>
+                    <button class="hover:bg-slate-300 rounded-3xl border-2 border-slate-400 px-4 py-1 transition-all" onclick="restore(event)">Restore Default</button>
+                </form>
+            </div>
+            <div class="mt-4 rounded-3xl border-2 border-slate-500 p-3">
+                <h2 class="text-xl font-bold">Run</h2>
+                <div>Status <span id="run_status"></span></div>
+                <div id="scheduled_in"></div>
+                <div id="query"></div>
+                <hr class="my-4" />
+                <div>Deleted: <span id="deleted"></span></div>
+                <div>Messages deleted: <span id="messages_deleted"></span></div>
+                <div>Reviewed: <span id="reviewed"></span></div>
+                <hr class="my-4"/>
+                <div>Deleted total: <span id="deleted_total"></span></div>
+                <div>Messages deleted total: <span id="messages_deleted_total"></span></div>
+                <div>Reviewed total: <span id="reviewed_total"></span></div>
+                <hr/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
