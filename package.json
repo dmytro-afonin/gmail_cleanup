@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "npx tailwindcss -i ./input.css -o ./output.css --minify"
+    "build": "node build.js"
   },
   "dependencies": {
     "@types/google-apps-script": "^1.0.84"
