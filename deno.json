@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "build": "deno run --allow-read=index.html --allow-write=index.html --allow-run=npx build.ts"
+  },
+  "imports": {
+    "tailwind": "npm:tailwindcss@^3.4.14"
+  }
+}
