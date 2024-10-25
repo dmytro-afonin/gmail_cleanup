@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Gmail Cleanup</title>
+        <base target="_top">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.14 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:initial}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:initial;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:initial}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem}.mb-4,.my-4{margin-bottom:1rem}.mr-4{margin-right:1rem}.table{display:table}.hidden{display:none}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225/var(--tw-bg-opacity))}
+</style>
+    </head>
+    <body class="container mx-auto">
+        <h1>Delete your old emails</h1>
+        <form id="setting_form">
+            <fieldset class="mb-4">
+                <label>
+                    Delete older than
+                    <input id="value" class="mr-4"  name="value" type="number" max="999" min="1" step="1" inputmode="numeric" pattern="[1-9][0-9]*" />
+                </label>
+                <label class="mr-4">
+                    <input id="y" type="radio" name="unit" value="y" />
+                    years
+                </label>
+                <label class="mr-4 ">
+                    <input id="m" type="radio" name="unit" value="m" />
+                    months
+                </label>
+                <label class="mr-4 ">
+                    <input id="d" type="radio" name="unit" value="d" />
+                    days
+                </label>
+                <label class="mr-4 ">
+                    <input id="important" type="checkbox" name="important" />
+                    Remove important
+                </label>
+                <label class="mr-4 ">
+                    <input id="starred" type="checkbox" name="starred" />
+                    Remove Starred
+                </label>
+                <label class="mr-4 ">
+                    <input id="unread" type="checkbox" name="unread" />
+                    Remove Unread
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Schedule</legend>
+                <label class="mr-4">
+                    <input id="daily" type="radio" name="schedule" value="d" /> Daily
+                </label>
+                <label class="mr-4">
+                    <input id="monthly" type="radio" name="schedule" value="m" /> Monthly
+                </label>
+                <label class="mr-4">
+                    <input id="annual" type="radio" name="schedule" value="y" /> Annual
+                </label>
+                <label class="mr-4">
+                    <input id="none" type="radio" name="schedule" value="n" /> None
+                </label>
+            </fieldset>
+            <button class="hover:bg-slate-300 mr-4" onclick="run(event)">Run</button>
+            <button class="hover:bg-slate-300 mr-4" onclick="save(event)">Save</button>
+            <button class="hover:bg-slate-300" onclick="restore(event)">Restore Default</button>
+        </form>
+        <h2>Run</h2>
+        <div>Status <span id="run_status"></span></div>
+        <div id="scheduled_in"></div>
+        <div id="query"></div>
+        <hr class="my-4" />
+        <div>Deleted: <span id="deleted"></span></div>
+        <div>Messages deleted: <span id="messages_deleted"></span></div>
+        <div>Reviewed: <span id="reviewed"></span></div>
+        <hr class="my-4"/>
+        <div>Deleted total: <span id="deleted_total"></span></div>
+        <div>Messages deleted total: <span id="messages_deleted_total"></span></div>
+        <div>Reviewed total: <span id="reviewed_total"></span></div>
+        <script>
+            window.loadedProperties = {};
+            function getFormProperties() {
+                const formData = new FormData(document.getElementById('setting_form')); // Get the form data
+                return {
+                    OLDER_THAN_UNIT: formData.get('unit'),
+                    OLDER_THAN_VALUE: formData.get('value'),
+                    REMOVE_IMPORTANT: `${!!formData.get('important')}`,
+                    REMOVE_STARRED: `${!!formData.get('starred')}`,
+                    REMOVE_UNREAD: `${!!formData.get('unread')}`
+                };
+            }
+
+            function propagateUserSettings(response) {
+                window.loadedProperties = response;
+                document.getElementById('y').checked = response.OLDER_THAN_UNIT === 'y';
+                document.getElementById('m').checked = response.OLDER_THAN_UNIT === 'm';
+                document.getElementById('d').checked = response.OLDER_THAN_UNIT === 'd';
+                document.getElementById('value').value = response.OLDER_THAN_VALUE;
+                document.getElementById('important').checked = response.REMOVE_IMPORTANT === 'true';
+                document.getElementById('starred').checked = response.REMOVE_STARRED === 'true';
+                document.getElementById('unread').checked = response.REMOVE_UNREAD === 'true';
+                document.getElementById('run_status').textContent = response.RUN_STATUS;
+
+                if (response.SCHEDULED_TIME) {
+                    const date = new Date(+response.SCHEDULED_TIME);
+                    document.getElementById('scheduled_in').textContent = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+                }
+                document.getElementById('deleted').textContent = response.RUN_THREADS_DELETED;
+                document.getElementById('deleted_total').textContent = response.RUN_THREADS_DELETED_TOTAL;
+                document.getElementById('reviewed').textContent = response.RUN_THREADS_REVIWED;
+                document.getElementById('reviewed_total').textContent = response.RUN_THREADS_REVIWED_TOTAL;
+                document.getElementById('messages_deleted').textContent = response.RUN_MESSAGES_DELETED;
+                document.getElementById('messages_deleted_total').textContent = response.RUN_MESSAGES_DELETED_TOTAL;
+                document.getElementById('query').textContent = response.RUN_QUERY;
+            }
+
+            function run(e) {
+                e.preventDefault();
+                if (['FINISHED', 'ERROR', 'NEW'].includes(window.loadedProperties.RUN_STATUS)) {
+                    const properties = getFormProperties();
+                    google.script.run.withSuccessHandler(propagateUserSettings).runNow(properties);
+                }
+            }
+
+            function restore(e) {
+                e.preventDefault();
+                google.script.run.withSuccessHandler(propagateUserSettings).restoreDefaults();
+            }
+
+            function save(e) {
+                e.preventDefault();
+                const properties = getFormProperties();
+                google.script.run.withSuccessHandler(propagateUserSettings).setUserSearchSettings(properties);
+            }
+            function loadUserProperties() {
+                google.script.run.withSuccessHandler(propagateUserSettings).loadUserProperties();
+            }
+            loadUserProperties();
+        </script>
+    </body>
+</html>

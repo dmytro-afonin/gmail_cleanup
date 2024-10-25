@@ -29,7 +29,7 @@ const errorOutput = new TextDecoder().decode(stderr);
 // Handle the output
 if (minifiedCss) {
     // Optionally, if you want to inject it directly into the HTML:
-    const htmlFilePath = "./index.html";
+    const htmlFilePath = "./src/index.html";
     const htmlContent = await Deno.readTextFile(htmlFilePath);
 
     // Insert the minified CSS inside a <style> tag in the <head> of the HTML
