@@ -1,31 +1,54 @@
 {
-	"name": "Deno",
-    "image": "denoland/deno:2.0.3",
-  // Features to add to the dev container. More info: https://containers.dev/features.
-    "features": {
-      "ghcr.io/devcontainers/features/node:1": {
-        "version": "20.18.0"
-      },
-      "ghcr.io/devcontainers/features/git:1": {
-        "version": "2.47.0"
-      },
-      "ghcr.io/devcontainers/features/sshd:1": {}
+  "name": "Deno Development Environment",
+  "image": "denoland/deno:2.0.3",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "latest"
     },
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
-
-	// Configure tool-specific properties.
-
-  "customizations" : {
-    "jetbrains" : {
-      "backend" : "IntelliJ"
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
     }
-  }
+  },
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  // Forward Deno's default port for development server
+//  "forwardPorts": [8000],
+
+  // Install dependencies and configure git
+  "postCreateCommand": "deno upgrade && git config --global pull.rebase true",
+
+  // Configure IDE settings
+  "customizations": {
+    "jetbrains": {
+      "backend": "IntelliJ"
+    },
+    "vscode": {
+      "extensions": [
+        "denoland.vscode-deno"
+      ],
+      "settings": {
+        "deno.enable": true,
+        "deno.lint": true,
+        "deno.unstable": false
+      }
+    }
+  },
+
+  // Mount local SSH keys into container
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+  ],
+
+  // Use root user to avoid permission issues
+  "remoteUser": "root",
+
+  // Environment variables
+  "containerEnv": {
+    "DENO_DIR": "/root/.cache/deno"
+  }
 }
