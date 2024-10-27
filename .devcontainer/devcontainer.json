@@ -2,30 +2,24 @@
   "name": "Deno Development Environment",
   "image": "denoland/deno:2.0.3",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "latest"
-    },
     "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest"
+      "version": "2.47.0"
     },
     "ghcr.io/devcontainers/features/sshd:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/github-cli:1": {
-      "version": "latest"
+      "version": "9.2",
+      "forwardAgent": true
     }
   },
 
   // Forward Deno's default port for development server
-//  "forwardPorts": [8000],
-
-  // Install dependencies and configure git
-  "postCreateCommand": "deno upgrade && git config --global pull.rebase true",
+  //  "forwardPorts": [8000],
+  "postCreateCommand": "bash -c git config --global pull.rebase true; git config --global user.name \"Dmytro Afonin\"; git config --global user.email \"stealss7@gmail.com\";",  // Install dependencies and configure git
 
   // Configure IDE settings
   "customizations": {
     "jetbrains": {
-      "backend": "IntelliJ"
+      "backend": "WebStorm",
+      "plugins": ["deno", "com.jetbrains.sh"]
     },
     "vscode": {
       "extensions": [
